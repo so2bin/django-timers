@@ -12,7 +12,30 @@
 * 修改： `TimerManager.timer_modify`
 * 删除： `TimerManager.timer_delete`
 
-## 安装
+## Install
 1. 与安装普通django app一样，下载到django项目中，把`timers`添加到`settings.py`的`INSTALLED_APPS`中；
 2. 执行`python manager.py makemigrations timers`
 3. 执行`python manager.py migrate`
+
+## Usage
+Here is an example from `djtimer/test.py`. There is a callback function in `test.py` and registered in a timer task that will
+call back after 5 minutes. The first parameter of `TimerManager.timer_register` is the function package route that will called
+with `smart_import`.
+
+```python
+import random
+from djtimers.utils import TimerManager
+from django.utils import timezone
+# 回调函数
+def test_sync_callback():
+    time.sleep(random.random()*4)
+    logger.info(f"test sync timer callback function")
+
+# register a timer task that will call after 5 minutes
+now = timezone.now()
+invoketime = now + datetime.timedelta(minutes=5)
+invoketime.replace(second=0)
+TimerManager.timer_register("djtimers.tests.test_sync_callback", invoketime, "TEST_TASK", is_async=False)
+```
+
+more examples shows in `djtimers/test.py`.
