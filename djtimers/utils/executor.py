@@ -39,7 +39,7 @@ class BatchTimerExecutor(BaseTimerExecutor):
 
     @classmethod
     def get_timer_task_dao(cls):
-        from timers.models import TimerTask
+        from djtimers.models import TimerTask
         return TimerTask.objects
 
     def get_latest_runnable_tasks(self):

@@ -2,6 +2,8 @@ import logging
 from celery import shared_task
 from django.db import transaction, models
 
+from .manager import TimerManager
+
 logger = logging.getLogger(__file__)
 
 #########################################################

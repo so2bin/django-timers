@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class TimersConfig(AppConfig):
-    name = 'timers'
+class DJTimersConfig(AppConfig):
+    name = 'djtimers'
 
     def ready(self):
         # initial timer manager

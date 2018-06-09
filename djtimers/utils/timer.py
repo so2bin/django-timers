@@ -14,9 +14,9 @@ from celery import shared_task
 from celery import Celery
 
 from pylibs.smart_import import smart_import
-from timers.const import const
-from timers.exceptions import TimerValidateError, TimerParameterError
-from timer.const import TimerKlass
+from djtimers.const import const
+from djtimers.exceptions import TimerValidateError, TimerParameterError
+from djtimers.const import TimerKlass
 
 logger = logging.getLogger(__file__)
 
@@ -43,7 +43,7 @@ class TimerRunner(threading.Thread):
 
     @classmethod
     def get_timer_task_dao(cls):
-        from timers.models import TimerTask
+        from djtimers.models import TimerTask
         return TimerTask.objects
 
     def run(self):

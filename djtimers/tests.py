@@ -9,7 +9,7 @@ from django.test import TestCase
 from django.utils import timezone
 # Create your tests here.
 
-from timers.utils import TimerManager
+from .utils import TimerManager
 
 logger = logging.getLogger(__file__)
 
