@@ -95,7 +95,8 @@ class TimerRunner(threading.Thread):
             invoketime = invoketime.astimezone(tz=timezone.get_current_timezone())
         # invoke time precision is 1 minute
         if invoketime.second != 0:
-            invoketime = invoketime.replace(minute=invoketime.minute + 1, second=0, microsecond=0)
+            invoketime = invoketime.replace(second=0, microsecond=0)
+            invoketime = invoketime + datetime.timedelta(minutes=invoketime.minute + 1)
         if isinstance(args, (list, tuple)):
             args = json.dumps(args)
         # 将tkey添加到kwargs中
